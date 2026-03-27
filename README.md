@@ -126,6 +126,52 @@ python3
 
 > **Note:** a-Shell does not support Jupyter notebooks natively. For notebooks on-device, use Option 2 (Carnets) instead.
 
+#### Installing Claude Code in a Shell on iPhone
+
+Claude Code is a Node.js CLI tool, so it requires `npm`. a-Shell does not include Node.js, so use one of the two approaches below.
+
+**Option A — iSH (Alpine Linux on iOS)**
+
+[iSH](https://ish.app/) runs a full Alpine Linux environment on iPhone and supports `apk`, `node`, and `npm`.
+
+1. Install **iSH** (free) from the [App Store](https://apps.apple.com/app/ish-shell/id1436902243).
+2. Open iSH and install Node.js:
+
+```sh
+apk add nodejs npm
+```
+
+3. Install Claude Code globally:
+
+```sh
+npm install -g @anthropic-ai/claude-code
+```
+
+4. Verify the installation:
+
+```sh
+claude --version
+```
+
+5. Authenticate with your Anthropic API key:
+
+```sh
+export ANTHROPIC_API_KEY=your_api_key_here
+claude
+```
+
+**Option B — SSH into a remote server**
+
+If you have a remote server with Node.js already available:
+
+```sh
+# On the remote server
+npm install -g @anthropic-ai/claude-code
+claude --version
+```
+
+Then use it over SSH from any iOS SSH client (Blink Shell, Termius, etc.).
+
 ### Option 4: SSH into a Remote Server
 
 If you have access to a remote Linux server or cloud VM with conda installed:
