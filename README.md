@@ -172,6 +172,60 @@ claude --version
 
 Then use it over SSH from any iOS SSH client (Blink Shell, Termius, etc.).
 
+#### Using Claude Code on iPhone (iSH)
+
+Once installed, open iSH every session and set your API key:
+
+```sh
+export ANTHROPIC_API_KEY=your_api_key_here
+```
+
+To avoid typing this every session, add it to your shell profile:
+
+```sh
+echo 'export ANTHROPIC_API_KEY=your_api_key_here' >> ~/.profile
+source ~/.profile
+```
+
+**Interactive mode** — chat with Claude in the terminal:
+
+```sh
+claude
+```
+
+Type your question or instruction, press Enter. Type `/exit` or Ctrl+C to quit.
+
+**One-shot mode** — run a single prompt and return to shell:
+
+```sh
+claude "explain this error: ModuleNotFoundError: No module named numpy"
+claude "write a python function to reverse a string"
+```
+
+**Work on a project** — navigate to your repo and let Claude read the code:
+
+```sh
+cd /root/conda
+claude "what does iphone_demo.py do?"
+claude "add error handling to iphone_demo.py"
+```
+
+**Useful Claude Code commands inside the session:**
+
+| Command | What it does |
+|---------|-------------|
+| `/help` | Show all available commands |
+| `/clear` | Clear conversation history |
+| `/exit` | Exit Claude Code |
+| `Ctrl+C` | Cancel current response |
+
+**Limitations on iPhone:**
+
+- iSH emulates x86 on ARM — it is slower than a real terminal
+- File access is sandboxed to iSH's own filesystem (`/root`)
+- To work on files from a-Shell, copy them into iSH first via the Files app
+- No persistent environment variables between sessions (use `~/.profile`)
+
 ### Option 4: SSH into a Remote Server
 
 If you have access to a remote Linux server or cloud VM with conda installed:
