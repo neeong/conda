@@ -59,16 +59,72 @@ pip install numpy pandas matplotlib dask toolz bokeh partd psutil dill
 
 ### Option 3: a-Shell (Terminal on iOS)
 
-[a-Shell](https://holzschu.github.io/a-Shell_iOS/) is a terminal app for iOS that includes Python.
+[a-Shell](https://holzschu.github.io/a-Shell_iOS/) is a terminal app for iOS that includes Python 3 and pip.
 
-1. Install a-Shell from the App Store.
-2. Install required packages:
+#### Step 1: Install a-Shell
+
+Install **a-Shell** (free) from the [App Store](https://apps.apple.com/app/a-shell/id1473805438).
+
+#### Step 2: Update pip
+
+Open a-Shell and run:
+
+```sh
+pip install --upgrade pip
+```
+
+#### Step 3: Install required packages
+
+Install all packages used in this environment:
 
 ```sh
 pip install numpy pandas matplotlib dask toolz bokeh partd psutil dill
 ```
 
-3. Transfer your `.py` scripts via Files and run them with `python script.py`.
+Each package and what it is used for:
+
+| Package | Purpose |
+|---------|---------|
+| `numpy` | Numerical arrays and math |
+| `pandas` | Data analysis and DataFrames |
+| `matplotlib` | Plotting and visualization |
+| `dask` | Parallel and out-of-core computation |
+| `toolz` | Functional programming utilities |
+| `bokeh` | Interactive web-based plots |
+| `partd` | Append-only key-value storage (used by dask) |
+| `psutil` | System/process utilities |
+| `dill` | Extended pickling/serialization |
+
+#### Step 4: Get the notebooks onto your iPhone
+
+**Option A — clone via a-Shell (recommended):**
+
+```sh
+git clone https://github.com/neeong/conda
+cd conda
+```
+
+**Option B — download manually:**
+
+1. Open this repo on GitHub in Safari.
+2. Tap a `.ipynb` file → Raw → tap the share icon → Save to Files → a-Shell Documents.
+
+#### Step 5: Run a script
+
+```sh
+cd conda
+python -c "import dask; print(dask.__version__)"
+```
+
+For interactive use, a-Shell also supports `python3` directly:
+
+```sh
+python3
+>>> import pandas as pd
+>>> pd.DataFrame({'a': [1, 2, 3]})
+```
+
+> **Note:** a-Shell does not support Jupyter notebooks natively. For notebooks on-device, use Option 2 (Carnets) instead.
 
 ### Option 4: SSH into a Remote Server
 
